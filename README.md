@@ -51,7 +51,7 @@ event Burned(address _from, uint256 amount);
 4. testrpc
 
 ## Run tests
-1. run `testrpc -l 8000000` in terminal
+1. run `testrpc` in terminal
 2. run `truffle test` in another terminal to execute tests.
 
 
