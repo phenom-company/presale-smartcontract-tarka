@@ -45,14 +45,14 @@ contract PreSalePTARK {
     uint256 public totalSupply = 0;
     mapping (address => uint256) public balances;
     // Events Log
-    event Transfer(address _from, address _to, uint256 amount);
+    event Transfer(address _from, address _to, uint256 amount); 
     event Burned(address _from, uint256 amount);
     // Modifiers
     // Allows execution by the contract owner only
     modifier onlyOwner {
         require(msg.sender == owner);
         _;
-    }
+    }  
 
    /**
     *   @dev Contract constructor function sets owner address
@@ -89,18 +89,19 @@ contract PreSalePTARK {
         balances[_investor] = balances[_investor].add(_mintedAmount);
         totalSupply = totalSupply.add(_mintedAmount);
         Transfer(this, _investor, _mintedAmount);
-
+        
     }
 
    /**
     *   @dev Burn Tokens
     *   @param _investor     token holder address which the tokens will be burnt
     */
-    function burnTokens(address _investor) external onlyOwner {
+    function burnTokens(address _investor) external onlyOwner {   
         require(balances[_investor] > 0);
         uint256 tokens = balances[_investor];
         balances[_investor] = 0;
         totalSupply = totalSupply.sub(tokens);
         Burned(_investor, tokens);
     }
-}
+} 
+
